@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sorry 😅 x999</title>
+  <style>
+    body {
+      background: #fff0f0;
+      font-family: "Poppins", Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #d33;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #sorry-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 800px;
+      gap: 4px;
+      margin-bottom: 40px;
+    }
+
+    .sorry {
+      background: #ffe6e6;
+      padding: 5px 10px;
+      border-radius: 10px;
+      color: #c00;
+      font-weight: bold;
+      font-size: 14px;
+      opacity: 0;
+      transform: scale(0.5);
+      animation: appear 0.3s ease forwards;
+    }
+
+    @keyframes appear {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .button-container {
+      margin-bottom: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    button {
+      background-color: #ff6666;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff3333;
+      transform: scale(1.05);
+    }
+
+    #tap-icon {
+      font-size: 18px;
+      color: #c00;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    #thankyou {
+      display: none;
+      text-align: center;
+      font-size: 28px;
+      color: #c00;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Sorry 😅 x999</h1>
+
+<div id="sorry-container"></div>
+
+<div class="button-container">
+  <button id="forgiveBtn">Forgive Me Mam ❤️</button>
+  <span id="tap-icon">👆 Tap here</span>
+</div>
+
+<div id="thankyou">Thank you so much Mam ❤️</div>
+
+<script>
+const container = document.getElementById("sorry-container");
+const btn = document.getElementById("forgiveBtn");
+const tapIcon = document.getElementById("tap-icon");
+const thanks = document.getElementById("thankyou");
+
+let total = 999;
+let count = 0;
+
+function addSorry() {
+  if(count >= total) return;
+  const div = document.createElement("div");
+  div.className = "sorry";
+  div.textContent = "Sorry 😅";
+  container.appendChild(div);
+  div.scrollIntoView({behavior: "smooth", block: "end"});
+  count++;
+  setTimeout(addSorry, 5); // 5ms gap for fast but visible pop
+}
+
+addSorry();
+
+// Button click
+btn.addEventListener("click", () => {
+  btn.style.display = "none";
+  tapIcon.style.display = "none";
+  thanks.style.display = "block";
+  thanks.scrollIntoView({behavior: "smooth"});
+});
+</script>
+
+</body>
+</html>
